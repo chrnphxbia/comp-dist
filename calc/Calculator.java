@@ -19,4 +19,9 @@ public interface Calculator extends Remote {
     public Fraction divide(Fraction a, Fraction b) throws RemoteException;
     public Fraction max(Fraction a, Fraction b) throws RemoteException;
     public Fraction min(Fraction a, Fraction b) throws RemoteException;
+
+    public ComplexNum addComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
+    public ComplexNum subComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
+    public ComplexNum multComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
+    public ComplexNum divComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
 }

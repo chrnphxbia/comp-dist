@@ -43,6 +43,22 @@ public class CalculatorServer implements Calculator {
 	return a.min(b);        
     }	
 
+    public ComplexNum addComplexNum(ComplexNum a, ComplexNum b) throws RemoteException {
+        return a.addComplexNum(b);
+    }
+    
+    public ComplexNum subComplexNum(ComplexNum a, ComplexNum b) throws RemoteException {
+        return a.subComplexNum(b);
+    }
+    
+    public ComplexNum multComplexNum(ComplexNum a, ComplexNum b) throws RemoteException {
+        return a.multComplexNum(b);
+    }
+    
+    public ComplexNum divComplexNum(ComplexNum a, ComplexNum b) throws RemoteException {
+        return a.divComplexNum(b);
+    }
+
     public static void main(String[] args) {
         try {
             // Create and export the CalculatorServer object
