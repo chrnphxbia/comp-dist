@@ -39,6 +39,8 @@ public class CalculatorClient {
             System.out.println("Subtraction: " + stub.subComplexNum(c1, c2).toString());
             System.out.println("Multiplication: " + stub.multComplexNum(c1, c2).toString());
             System.out.println("Division: " + stub.divComplexNum(c1, c2).toString());
+            System.out.println("Min: " + stub.minComplexNum(c1, c2).toString());
+            System.out.println("Max: " + stub.maxComplexNum(c1, c2).toString());
 
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());

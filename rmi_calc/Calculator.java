@@ -24,4 +24,6 @@ public interface Calculator extends Remote {
     public ComplexNum subComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
     public ComplexNum multComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
     public ComplexNum divComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
+    public ComplexNum maxComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
+    public ComplexNum minComplexNum(ComplexNum a, ComplexNum b) throws RemoteException;
 }

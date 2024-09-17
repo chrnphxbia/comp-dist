@@ -59,6 +59,14 @@ public class CalculatorServer implements Calculator {
         return a.divComplexNum(b);
     }
 
+    public ComplexNum minComplexNum(ComplexNum a, ComplexNum b) throws RemoteException {
+        return a.minComplexNum(b);
+    }
+    
+    public ComplexNum maxComplexNum(ComplexNum a, ComplexNum b) throws RemoteException {
+        return a.maxComplexNum(b);
+    }
+
     public static void main(String[] args) {
         try {
             // Create and export the CalculatorServer object
