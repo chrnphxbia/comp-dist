@@ -11,7 +11,7 @@ Este comando gerará os arquivos `calc_pb2.py` e `calc_pb2_grpc.py`.
 
 Por fim, em um terminal, utilize `python calc_server.py` para iniciar o servidor.
 
-Logo em seguida, execute `python calc_client.py` para executar o cliente da calculadora.
+Logo em seguida, em outro terminal, execute `python calc_client.py` para executar o cliente da calculadora.
 
 ## Verificando resultados
 Caso a execução seja bem sucedida, a saída da aplicação será semelhante à imagem abaixo:
