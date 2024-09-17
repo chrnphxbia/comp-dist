@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package calculator;
+
+// The calculator service definition
+service Calculator {
+  rpc AddFrac (FracReq) returns (FracRes);
+  rpc SubFrac (FracReq) returns (FracRes);
+  rpc MultFrac (FracReq) returns (FracRes);
+  rpc DivFrac (FracReq) returns (FracRes);
+  rpc MaxFrac (FracReq) returns (FracRes);
+  rpc MinFrac (FracReq) returns (FracRes);
+}
+
+message Frac{
+  int32 numerator = 1;
+  int32 denominator = 2;
+}
+
+message FracReq {
+  Frac fraction1 = 1;
+  Frac fraction2 = 2;
+}
+
+message FracRes {
+  Frac result = 1;
+}
