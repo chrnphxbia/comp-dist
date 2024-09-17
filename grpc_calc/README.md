@@ -15,3 +15,5 @@ Logo em seguida, execute `python calc_client.py` para executar o cliente da calc
 
 ## Verificando resultados
 Caso a execução seja bem sucedida, a saída da aplicação será semelhante à imagem abaixo:
+
+![execucao](./execucao.png)
