@@ -1,3 +1,6 @@
+# NOME: Pedro Henrique Araujo Farias
+# RA: 10265432
+
 import grpc
 from concurrent import futures
 import calc_pb2

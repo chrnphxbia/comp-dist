@@ -1,4 +1,7 @@
 # Implementação: Calculadora RMI com Java
+NOME: Pedro Henrique Araujo Farias
+
+RA: 10265432
 
 ## Como executar este projeto?
 No `rmi_calc`, execute o seguinte comando:

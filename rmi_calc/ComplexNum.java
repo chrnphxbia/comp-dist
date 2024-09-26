@@ -1,3 +1,8 @@
+/*
+ * NOME: Pedro Henrique Araujo Farias
+ * RA: 10265432
+*/
+
 import java.lang.Math;
 
 public class ComplexNum implements java.io.Serializable {

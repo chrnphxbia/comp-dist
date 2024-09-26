@@ -1,3 +1,8 @@
+/*
+ * NOME: Pedro Henrique Araujo Farias
+ * RA: 10265432
+*/
+
 // CalculatorClient.java
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;

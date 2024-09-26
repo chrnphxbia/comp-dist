@@ -1,3 +1,8 @@
+/*
+ * NOME: Pedro Henrique Araujo Farias
+ * RA: 10265432
+ */
+
 // Calculator.java
 import java.rmi.Remote;
 import java.rmi.RemoteException;

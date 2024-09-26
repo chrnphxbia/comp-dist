@@ -1,3 +1,8 @@
+/*
+ * NOME: Pedro Henrique Araujo Farias
+ * RA: 10265432
+*/
+
 public class Fraction implements java.io.Serializable {
 	int numer, denom;
 	private static final long serialVersionUID = 1L;

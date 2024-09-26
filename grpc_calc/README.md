@@ -1,4 +1,7 @@
 # Implementação: Calculadora gRPC com Python 
+NOME: Pedro Henrique Araujo Farias
+
+RA: 10265432
 
 ## Como executar este projeto?
 No diretório `calc`, execute o seguinte comando:
