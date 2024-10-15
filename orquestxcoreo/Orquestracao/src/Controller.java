@@ -1,11 +1,10 @@
 import Services.*;
 import Entities.*;
-import Orchestrators.OrderOrchestrator;
-
 import java.util.Random;
 import java.util.Scanner;
+import Orchestrators.OrderOrchestrator;
 
-public class Main {
+public class Controller {
     private static void showMenu() {
         System.out.println("MENU DE OPCOES");
         System.out.println("0) Ver catalogo de produtos");
@@ -25,7 +24,6 @@ public class Main {
         ShoppingCart shoppingCart = new ShoppingCart();
         ProductCatalog catalog = new ProductCatalog();
         catalog.loadCatalogFromDatabase("database/catalog.txt");
-        OrderOrchestrator orderOrchestrator = new OrderOrchestrator();
 
         showMenu();
         while (flag) {
@@ -33,7 +31,7 @@ public class Main {
             optionSelected = scanner.nextLine();
 
             switch (optionSelected) {
-                case "0": // ver catalogo de produtos
+                case "0":
                     catalog.showCatalog();
                     break;
                 
@@ -55,7 +53,9 @@ public class Main {
                 
                 case "4":
                     System.out.println("Gerando pedido...");
+                    OrderOrchestrator orderOrchestrator = new OrderOrchestrator(catalog);
                     Order newOrder = new Order(random.nextInt(1000));
+                    newOrder.setItems(shoppingCart.getCart());
                     orderOrchestrator.processOrder(newOrder);
                     break;
                 

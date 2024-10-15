@@ -1,37 +1,37 @@
 package Entities;
 
 public class Product {
-	private int productID;
-	private int numProducts;
-	private String productName;
+	private int id;
+	private String name;
+	private double price;
 
-	public Product(int productID, int numProducts, String productName) {
-		this.productID = productID;
-		this.numProducts = numProducts;
-		this.productName = productName;
+	public Product(int productID, String productName, double price) {
+		this.price = price;
+		this.id = productID;
+		this.name = productName;
 	}
 
-	public int getProductID() {
-		return this.productID;
+	public int getId() {
+		return this.id;
 	}
 
-	public void setProductID(int productID) {
-		this.productID = productID;
+	public void setId(int productID) {
+		this.id = productID;
 	}
 
-	public int getNumProducts() {
-		return this.numProducts;
+	public String getName() {
+		return this.name;
 	}
 
-	public void setNumProducts(int numProducts) {
-		this.numProducts = numProducts;
+	public void setName(String productName) {
+		this.name = productName;
 	}
 
-	public String getProductName() {
-		return this.productName;
+	public double getPrice() {
+		return this.price;
 	}
 
-	public void setProductName(String productName) {
-		this.productName = productName;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

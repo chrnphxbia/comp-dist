@@ -4,9 +4,15 @@ import Entities.Order;
 import Services.*;
 
 public class OrderOrchestrator {
-	private Payment paymentService = new Payment();
-	private ProductCatalog inventoryService = new ProductCatalog();
-	private Notification notificationService =  new Notification();
+	private Payment paymentService;
+	private ProductCatalog catalogService;
+	private Notification notificationService;
+
+	public OrderOrchestrator(ProductCatalog catalog) {
+		this.catalogService = catalog;
+		this.paymentService = new Payment();
+		this.notificationService = new Notification();
+	}
 
 	public boolean processOrder(Order order) {
 		boolean paymentSuccess = this.paymentService.processPayment(order);
@@ -15,9 +21,9 @@ public class OrderOrchestrator {
 			return false;
 		}
 
-		boolean inventorySuccess = this.inventoryService.updateCatalog(order);
-		if(!inventorySuccess) {
-			System.out.println("Atualizacao de inventario falhou!");
+		boolean catalogSuccess = this.catalogService.updateCatalog(order);
+		if(!catalogSuccess) {
+			System.out.println("Atualizacao de catalogo falhou!");
 			return false;
 		}
 

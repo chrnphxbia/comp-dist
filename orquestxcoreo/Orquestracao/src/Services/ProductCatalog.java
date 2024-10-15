@@ -1,12 +1,10 @@
 package Services;
 
-import java.io.File;
-import java.util.Scanner;
-
 import Entities.Order;
 import Entities.Product;
-
+import java.util.Scanner;
 import java.util.ArrayList;
+import java.io.File;
 import java.io.FileNotFoundException;
 
 public class ProductCatalog {
@@ -17,8 +15,9 @@ public class ProductCatalog {
 	}
 
 	public void loadCatalogFromDatabase(String path) {
+		double productPrice;
 		String productName;
-		int productID, numProducts, lines;
+		int productID, lines;
 
 		try {
 			Scanner scanner = new Scanner(new File(path));
@@ -26,10 +25,10 @@ public class ProductCatalog {
 
 			for(int i = 0; i < lines; i++) {	
 				productID = scanner.nextInt();
-				numProducts = scanner.nextInt();
-				productName = scanner.nextLine();
+				productPrice = Double.parseDouble(scanner.next());
+				productName = scanner.nextLine().stripLeading();
 				
-				Product newProduct = new Product(productID, numProducts, productName);
+				Product newProduct = new Product(productID, productName, productPrice);
 				this.catalog.add(newProduct);
 			}
 
@@ -45,12 +44,16 @@ public class ProductCatalog {
 
 	public boolean updateCatalog(Order order) {
 		System.out.println("Atualizando catalogo...");
+		for (Product product : order.getItems()) {
+			System.out.println("Produto " + product.getName() + " removido do catalogo");
+			this.catalog.remove(product);
+		}
 		return true;
 	}
 
 	public Product getProductByID(int productID) {
 		for (Product product : this.catalog ) {
-			if(product.getProductID() == productID) {
+			if(product.getId() == productID) {
 				return product;
 			}
 		}
@@ -61,9 +64,8 @@ public class ProductCatalog {
 	public void showCatalog() {
 		System.out.println("CATALOGO DE PRODUTOS");
 		for ( Product product : this.catalog ) {
-			System.out.println("ID: " + product.getProductID() + "; Produto: " 
-			+ product.getProductName() + "; Unidades: " + product.getNumProducts()
-			+ ";");
+			System.out.println("ID: " + product.getId() + "; Produto: " 
+			+ product.getName() + "; Price: $" + product.getPrice() + ";");
 		}
 	}
 }
