@@ -6,7 +6,7 @@ import Entities.Product;
 public class Payment {
 	
 	public boolean processPayment(Order order) {
-		System.out.println("Processando pagamento...");
+		System.out.println("\nProcessando pagamento...");
 		
 		for (Product product : order.getItems() ) {
 			System.out.println("Voce pagou $" + product.getPrice() + " por " +

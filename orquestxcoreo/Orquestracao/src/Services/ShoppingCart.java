@@ -17,12 +17,12 @@ public class ShoppingCart {
 
 	public void addToCart(Product product) {
 		this.cart.add(product);
-		System.out.println("Produto adicionado ao carrinho!");
+		System.out.println("\nProduto adicionado ao carrinho!");
 	}
 
 	public void removeFromCart(Product product) {
 		this.cart.remove(product);
-		System.out.println("Produto removido do carrinho!");
+		System.out.println("\nProduto removido do carrinho!");
 	}
 
 	public Product getProductByID(int productID) {
@@ -36,7 +36,7 @@ public class ShoppingCart {
 	}
 
 	public void showShoppingCart() {
-		System.out.println("CARRINHO DE COMPRAS");
+		System.out.println("\nCARRINHO DE COMPRAS");
 		for ( Product product : this.cart ) {
 			System.out.println("ID: " + product.getId() + "; Produto: " 
 			+ product.getName() + "; Price: " + product.getPrice() + ";");

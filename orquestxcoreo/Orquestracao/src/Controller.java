@@ -6,20 +6,21 @@ import Orchestrators.OrderOrchestrator;
 
 public class Controller {
     private static void showMenu() {
-        System.out.println("MENU DE OPCOES");
+        System.out.println("\nMENU DE OPCOES");
         System.out.println("0) Ver catalogo de produtos");
         System.out.println("1) Ver itens no carrinho");
         System.out.println("2) Adicionar item ao carrinho");
         System.out.println("3) Remover item do carrinho");
         System.out.println("4) Realizar pedido");
-        System.out.println("5) Sair\n");
+        System.out.println("5) Sair");
     }
 
     public static void main(String[] args) throws Exception {
-        Random random = new Random();
         int productID;
+        String input = "";
         boolean flag = true;
         String optionSelected = "";
+        Random random = new Random();
         Scanner scanner = new Scanner(System.in);
         ShoppingCart shoppingCart = new ShoppingCart();
         ProductCatalog catalog = new ProductCatalog();
@@ -27,7 +28,7 @@ public class Controller {
 
         showMenu();
         while (flag) {
-            System.out.print("Selecione uma opcao: ");
+            System.out.print("\nSelecione uma opcao (! para exibir menu): ");
             optionSelected = scanner.nextLine();
 
             switch (optionSelected) {
@@ -40,22 +41,25 @@ public class Controller {
                     break;
                 
                 case "2":
-                    System.out.print("Insira o ID do item a ser inserido: ");
+                    System.out.print("\nInsira o ID do item a ser inserido: ");
                     productID = Integer.parseInt(scanner.nextLine());
                     shoppingCart.addToCart(catalog.getProductByID(productID));
                     break;
                 
                 case "3":
-                    System.out.print("Insira o ID do item a ser removido: ");
+                    System.out.print("\nInsira o ID do item a ser removido: ");
                     productID = Integer.parseInt(scanner.nextLine());
                     shoppingCart.removeFromCart(shoppingCart.getProductByID(productID));
                     break;
                 
                 case "4":
-                    System.out.println("Gerando pedido...");
+                    System.out.println("\nGerando pedido...");
                     OrderOrchestrator orderOrchestrator = new OrderOrchestrator(catalog);
                     Order newOrder = new Order(random.nextInt(1000));
                     newOrder.setItems(shoppingCart.getCart());
+                    System.out.print("\nInsira seu endereco: ");
+                    input = scanner.nextLine();
+                    newOrder.setAddress(input);
                     orderOrchestrator.processOrder(newOrder);
                     break;
                 
@@ -63,9 +67,13 @@ public class Controller {
                     flag = false;
                     System.out.println("Encerrando...");
                     break;
+                
+                case "!":
+                    showMenu();
+                    break;
             
                 default:
-                    System.out.println("Opcao invalida. Tente novamente.\n");
+                    System.out.println("\nOpcao invalida. Tente novamente.");
                     break;
             }
         }

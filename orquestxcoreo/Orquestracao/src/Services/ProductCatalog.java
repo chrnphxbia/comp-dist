@@ -43,7 +43,7 @@ public class ProductCatalog {
 	}
 
 	public boolean updateCatalog(Order order) {
-		System.out.println("Atualizando catalogo...");
+		System.out.println("\nAtualizando catalogo...");
 		for (Product product : order.getItems()) {
 			System.out.println("Produto " + product.getName() + " removido do catalogo");
 			this.catalog.remove(product);
@@ -62,7 +62,7 @@ public class ProductCatalog {
 	}
 
 	public void showCatalog() {
-		System.out.println("CATALOGO DE PRODUTOS");
+		System.out.println("\nCATALOGO DE PRODUTOS");
 		for ( Product product : this.catalog ) {
 			System.out.println("ID: " + product.getId() + "; Produto: " 
 			+ product.getName() + "; Price: $" + product.getPrice() + ";");

@@ -5,6 +5,7 @@ import Services.*;
 
 public class OrderOrchestrator {
 	private Payment paymentService;
+	private Shipping shippingService;
 	private ProductCatalog catalogService;
 	private Notification notificationService;
 
@@ -12,6 +13,7 @@ public class OrderOrchestrator {
 		this.catalogService = catalog;
 		this.paymentService = new Payment();
 		this.notificationService = new Notification();
+		this.shippingService = new Shipping();
 	}
 
 	public boolean processOrder(Order order) {
@@ -27,8 +29,14 @@ public class OrderOrchestrator {
 			return false;
 		}
 
+		boolean shippingSuccess = this.shippingService.sendShippingConfirmation(order);
+		if(!shippingSuccess) {
+			System.out.println("Falha no envio do pedido!");
+			return false;
+		}
+
 		this.notificationService.sendConfirmation(order);
-		System.out.println("Pedido processado com sucesso!");
+		System.out.println("\nPedido processado com sucesso!");
 		return true;
 	}	
 
