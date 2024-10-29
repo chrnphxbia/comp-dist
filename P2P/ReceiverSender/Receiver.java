@@ -11,15 +11,14 @@ import java.util.ArrayList;
 public class Receiver {
     private static final int PORT = 5001;
     private static final int BUFFER_SIZE = 4096;
-    private static final ArrayList<String> HOSTs = new ArrayList<String>();
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Digite o nome do arquivo a ser recebido: ");
-        String fileName = scanner.nextLine();
-
+        ArrayList<String> HOSTs = new ArrayList<String>();
         HOSTs.add("172.16.18.167");
         HOSTs.add("172.16.18.142");
+        System.out.print("Digite o nome do arquivo a ser recebido: ");
+        String fileName = scanner.nextLine();
 
         for ( String host : HOSTs ) {
             try (Socket socket = new Socket(host, PORT)) {
