@@ -1,4 +1,5 @@
-package Local;
+// NOME: Pedro Henrique Araujo Farias
+// RA: 10265432
 
 public class LocalP2PNetwork {
     private static final int maxHops = 3;

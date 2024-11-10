@@ -3,24 +3,20 @@
  * RA: 10265432
 */
 
-// CalculatorClient.java
-import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.registry.LocateRegistry;
 
 public class CalculatorClient {
 
     public static void main(String[] args) {
         try {
-            // Get the registry
             Registry registry = LocateRegistry.getRegistry("localhost");
 
-            // Lookup the Calculator object
             Calculator stub = (Calculator) registry.lookup("Calculator");
 
-            // Invoke remote methods
             double a = 10.0;
             double b = 5.0;
-	        Fraction f1 = new Fraction(1,2);
+            Fraction f1 = new Fraction(1,2);
             Fraction f2 = new Fraction(2,3);
 
             System.out.println("Addition: " + stub.add(a, b));

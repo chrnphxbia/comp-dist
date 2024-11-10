@@ -1,4 +1,5 @@
-package Distributed;
+// NOME: Pedro Henrique Araujo Farias
+// RA: 10265432
 
 import java.util.Set;
 import java.util.List;
@@ -8,14 +9,12 @@ import java.util.ArrayList;
 // Classe que representa um nó na rede P2P
 public class NetworkNode {
 	private String nodeName;
-	private String ipAddress;
 	private Set<String> files; // Arquivos que o nó possui
 	private Set<String> queriedFiles; // Arquivos que o nó já buscou
 	private List<NetworkNode> neighbors; // Vizinhos do nó
 
-	public NetworkNode(String nodeName, String ipAddress) {
+	public NetworkNode(String nodeName) {
 		this.nodeName = nodeName;
-		this.ipAddress = ipAddress;
 		this.files = new HashSet<>();
 		this.neighbors = new ArrayList<>();
 		this.queriedFiles = new HashSet<>();
@@ -74,17 +73,5 @@ public class NetworkNode {
 	// Retorna o nome do nó
 	public String getNodeName() {
 		return nodeName;
-	}
-
-	public void setNodeName(String nodeName) {
-		this.nodeName = nodeName;
-	}
-
-	public String getIPAddress() {
-		return ipAddress;
-	}
-
-	public void setIPAddress(String ipAddress) {
-		this.ipAddress = ipAddress;
 	}
 }
