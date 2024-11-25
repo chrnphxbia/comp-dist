@@ -55,7 +55,7 @@ public class Menu {
                     System.out.print("Peso da aresta: ");
                     peso = Integer.parseInt(scanner.nextLine());
 
-                    graph.insereA(origem, destino, peso);
+                    graph = requestInsertEdge(graph, origem, destino, peso);
 
                     System.out.println("Aresta inserida!\n");
                     break;
@@ -76,8 +76,8 @@ public class Menu {
                     System.out.print("Vertice de destino da aresta: ");
                     destino = Integer.parseInt(scanner.nextLine());
 
-                    graph.removeA(origem, destino);
-                    
+                    graph = requestRemoveEdge(graph, origem, destino);
+
                     System.out.println("Aresta removida!\n");
                     break;
 
@@ -98,6 +98,51 @@ public class Menu {
         }
 
         scanner.close();
+    }
+
+    private static Graph requestRemoveEdge(Graph graph, int origin, int destiny) throws UnknownHostException, IOException, ClassNotFoundException {
+        Socket socket = new Socket("127.0.0.1", 54324);
+        DataOutputStream dataOutput = new DataOutputStream(socket.getOutputStream());
+        dataOutput.writeUTF("remove");
+
+        ObjectOutputStream objectOutput = new ObjectOutputStream(socket.getOutputStream());
+        objectOutput.writeObject(graph);
+
+        dataOutput.writeUTF(String.valueOf(origin));
+        dataOutput.writeUTF(String.valueOf(destiny));
+
+        ObjectInputStream objectInput = new ObjectInputStream(socket.getInputStream());
+        Graph newGraph = (Graph) objectInput.readObject();
+
+        dataOutput.close();
+        objectOutput.close();
+        objectInput.close();
+        socket.close();
+
+        return newGraph;
+    }
+
+    private static Graph requestInsertEdge(Graph graph, int origin, int destiny, int weight) throws UnknownHostException, IOException, ClassNotFoundException {
+        Socket socket = new Socket("127.0.0.1", 54324);
+        DataOutputStream dataOutput = new DataOutputStream(socket.getOutputStream());
+        dataOutput.writeUTF("insert");
+
+        ObjectOutputStream objectOutput = new ObjectOutputStream(socket.getOutputStream());
+        objectOutput.writeObject(graph);
+
+        dataOutput.writeUTF(String.valueOf(origin));
+        dataOutput.writeUTF(String.valueOf(destiny));
+        dataOutput.writeUTF(String.valueOf(weight));
+
+        ObjectInputStream objectInput = new ObjectInputStream(socket.getInputStream());
+        Graph newGraph = (Graph) objectInput.readObject();
+
+        dataOutput.close();
+        objectOutput.close();
+        objectInput.close();
+        socket.close();
+
+        return newGraph;
     }
 
     private static Graph requestRemoveVertex(Graph graph, int vertex) throws UnknownHostException, IOException, ClassNotFoundException {
